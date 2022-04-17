@@ -1,6 +1,6 @@
 <?php
 
-namespace Controller\Controller;
+namespace App\Controller;
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
@@ -8,6 +8,11 @@ use Psr\Container\ContainerInterface;
 
 class SitesController
 {
+    /*public function __invoke()
+    {
+        
+    }*/
+
     public function selectSites(Request $request, Response $response, array $args)
     {
         $str = file_get_contents('https://app.linkhouse.co/rekrutacja/strony');

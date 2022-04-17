@@ -2,7 +2,7 @@
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
-use Controller\SitesController;
+use App\Controller\SitesController;
 
 require '../vendor/autoload.php';
 
@@ -15,7 +15,7 @@ $app = new Slim\App([
     ]
 
 ]);
-$app->get('/', 'Controller\SitesController:selectSites');
+$app->get('/', SitesController::class . ':selectSites');
 $app->run();
 
 ?>
