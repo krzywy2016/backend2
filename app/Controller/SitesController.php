@@ -8,14 +8,11 @@ use Psr\Container\ContainerInterface;
 
 class SitesController
 {
-    /*public function __invoke()
-    {
-        
-    }*/
-
     public function selectSites(Request $request, Response $response, array $args)
     {
+        # funkcja wczytująca cały plik z API Linkhouse.co do ciągu znaków
         $str = file_get_contents('https://app.linkhouse.co/rekrutacja/strony');
+        # funkcja dekodująca ciąg JSON
         $myarray = json_decode($str, true);
         $records = [];
 
@@ -59,7 +56,7 @@ class SitesController
         $i = 0;
         foreach($records as  $i => $record)
         {
-            array_push($best_records, array("site" => $record[0], "similarity" => $record[1], "traffic" => $record[2], $record[3], $record[4]));
+            array_push($best_records, array("site" => $record[0], "similarity" => $record[1], "traffic" => $record[2], "quality" => $record[3], "price" => $record[4]));
             if ($i++ > 9) break;
         }
         return $response->withJson($best_records,200);
